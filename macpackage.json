@@ -1,0 +1,22 @@
+{
+    "name": "cpp-env-setup",
+    "version": "1.0.0",
+    "description": "Automated C/C++ development environment installer",
+    "main": "macindex.js",
+    "bin": {
+        "install-cpp": "./macindex.js"
+    },
+    "preferGlobal": true,
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "keywords": [
+        "cpp",
+        "c++",
+        "development",
+        "setup",
+        "vscode"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
+}
