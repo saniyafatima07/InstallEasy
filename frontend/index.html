@@ -1,0 +1,146 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>InstallEasy</title>
+</head>
+<body>
+    <header class="header">
+        <h1>InstallEasy</h1>
+        <button class="menu-toggle">☰</button>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="showOS('windows')">Windows</button>
+            <button class="tab" onclick="showOS('linux')">Linux</button>
+            <button class="tab" onclick="showOS('macos')">macOS</button>
+        </div>
+
+        <div class="content">
+            
+            <div id="windows" class="os-section active">
+                <h2>Windows Installation Guide</h2>
+                
+                <div class="step">
+                    <h3>1. Open PowerShell as Administrator</h3>
+                    <p>Right-click on the Windows Start button and select "Windows PowerShell (Admin)" or "Command Prompt (Admin)"</p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Install the Tool</h3>
+                    <p>Run the following command:</p>
+                    <div class="code-block">npm install -g cpp-env-setup</div>
+                </div>
+
+                <div class="step">
+                    <h3>3. Run Installation Script</h3>
+                    <div class="code-block">install-cpp-windows</div>
+                </div>
+
+                <div class="step">
+                    <h3>4. Wait for Installation</h3>
+                    <p>The script will automatically install:</p>
+                    <ul>
+                        <li>Chocolatey package manager</li>
+                        <li>MinGW C++ compiler</li>
+                        <li>Visual Studio Code</li>
+                        <li>Required VS Code extensions</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h3>5. Verify Installation</h3>
+                    <div class="code-block">g++ --version</div>
+                </div>
+            </div>
+
+           
+            <div id="linux" class="os-section">
+                <h2>Linux Installation Guide</h2>
+                
+                <div class="step">
+                    <h3>1. Open Terminal</h3>
+                    <p>Open your system terminal</p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Verify Sudo Access</h3>
+                    <div class="code-block">sudo -v</div>
+                </div>
+
+                <div class="step">
+                    <h3>3. Install the Tool</h3>
+                    <div class="code-block">sudo npm install -g cpp-env-setup</div>
+                </div>
+
+                <div class="step">
+                    <h3>4. Run Installation Script</h3>
+                    <div class="code-block">install-cpp-unix</div>
+                </div>
+
+                <div class="step">
+                    <h3>5. Verify Installation</h3>
+                    <div class="code-block">g++ --version</div>
+                </div>
+            </div>
+
+            
+            <div id="macos" class="os-section">
+                <h2>macOS Installation Guide</h2>
+                
+                <div class="step">
+                    <h3>1. Open Terminal</h3>
+                    <p>Open Terminal from Applications > Utilities</p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Install the Tool</h3>
+                    <div class="code-block">npm install -g cpp-env-setup</div>
+                </div>
+
+                <div class="step">
+                    <h3>3. Run Installation Script</h3>
+                    <div class="code-block">install-cpp-unix</div>
+                </div>
+
+                <div class="step">
+                    <h3>4. Verify Installation</h3>
+                    <div class="code-block">clang++ --version</div>
+                </div>
+            </div>
+
+            <div class="note">
+                <h4>Important Note</h4>
+                <p>After installation, restart your terminal to ensure all PATH changes are applied. If you encounter any issues, please check the troubleshooting section or report the issue on our GitHub repository.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showOS(os) {
+           
+            document.querySelectorAll('.os-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+        
+            document.getElementById(os).classList.add('active');
+            
+      
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+ 
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            const tabs = document.querySelector('.tabs');
+            tabs.style.display = tabs.style.display === 'none' ? 'flex' : 'none';
+        });
+    </script>
+</body>
+</html> -->
