@@ -4,7 +4,8 @@
     "description": "Automated C/C++ development environment installer",
     "main": "index.js",
     "bin": {
-        "install-cpp": "./index.js"
+        "install-cpp-windows": "./index.js",
+        "install-cpp-unix": "./macindex.js"
     },
     "preferGlobal": true,
     "engines": {
