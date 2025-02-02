@@ -3,8 +3,7 @@
 <head>
     <title>C++ Development Environment Installer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "index.css">
-    <script src = "main.js"></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
@@ -23,9 +22,7 @@
         </div>
 
         <div class="button-container">
-            <button id="startButton" onclick="startInstallation()">
-                Start Installation
-            </button>
+            <button id="startButton">Start Installation</button>
         </div>
 
         <div class="progress-container">
@@ -34,14 +31,15 @@
     </div>
 
     <script>
+        // Move this to a separate renderer.js file
         const { ipcRenderer } = require('electron');
         
-        function startInstallation() {
+        document.getElementById('startButton').addEventListener('click', () => {
             const startButton = document.getElementById('startButton');
             startButton.disabled = true;
             addProgress('Requesting administrator privileges...', '🔐');
             ipcRenderer.send('start-installation');
-        }
+        });
         
         function addProgress(message, icon = '📝') {
             const progress = document.getElementById('progress');
