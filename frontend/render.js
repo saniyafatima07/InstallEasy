@@ -16,7 +16,7 @@ function addProgress(message, icon = '📝') {
     progress.scrollTop = progress.scrollHeight;
 }
 
-ipcRenderer.on('installation-progress', (event, message) => {
+ipcRenderer.on('installation-progress', (_event, message) => {
     const icons = {
         'Starting installation...': '🚀',
         'Installing compiler...': '⚙',
