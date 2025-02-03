@@ -66,7 +66,7 @@ class CppInstaller {
 
     async installExtensions() {
         try {
-            for (const extension of this.extensionsToInstall) {
+             for (const extension of this.extensionsToInstall) {
                 await execPromise(`code --install-extension ${extension} --force`);
             }
             return true;

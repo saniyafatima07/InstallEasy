@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { execSync } = require('child_process');
-const { CppInstaller } = require('./installer');
+const { CppInstaller } = require('./installer.js');
 const elevate = require('windows-elevate');
 const isDev = require('electron-is-dev');
 const url = require("url");
@@ -58,7 +58,8 @@ function checkElevation() {
         execSync('net session', { stdio: 'ignore' });
         return true;
     } catch {
-        return false;
+        //return false;
+        console.log("Not admitted");
     }
 }
 
@@ -122,7 +123,7 @@ ipcMain.on('start-installation', async () => {
             if (mainWindow && !mainWindow.isDestroyed()) {
                 mainWindow.webContents.send('installation-error', 'Administrator privileges required');
             }
-            return;
+             return;
         }
     }
     
