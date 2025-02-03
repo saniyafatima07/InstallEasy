@@ -22,7 +22,7 @@ function createWindow() {
 
     // Load the index.html file
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'frontend/index.html'),
+        pathname: path.join(__dirname, '/index.html'),
         protocol: 'file' ,
         slashes: true
     }));
