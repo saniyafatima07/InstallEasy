@@ -58,8 +58,8 @@ function checkElevation() {
         execSync('net session', { stdio: 'ignore' });
         return true;
     } catch {
-        //return false;
-        console.log("Not admitted");
+        return false;
+        //console.log("Not admitted");
     }
 }
 
