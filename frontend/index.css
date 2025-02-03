@@ -77,7 +77,7 @@
         }
 
         .features li::before {
-            content: "✓";
+            content: ">";
             color: var(--primary-blue);
             font-weight: bold;
             margin-right: 1rem;

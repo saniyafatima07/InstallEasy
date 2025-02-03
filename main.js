@@ -4,8 +4,9 @@ const { execSync } = require('child_process');
 const { CppInstaller } = require('./installer');
 const elevate = require('windows-elevate');
 const isDev = require('electron-is-dev');
+const url = require("url");
 
-let mainWindow = null;
+let mainWindow ;
 let isElevated = false;
 
 function createWindow() {
@@ -20,7 +21,11 @@ function createWindow() {
     });
 
     // Load the index.html file
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'frontend/index.html'),
+        protocol: 'file' ,
+        slashes: true
+    }));
 
     // Open DevTools in development mode
     if (isDev) {
@@ -28,6 +33,25 @@ function createWindow() {
     }
 }
 
+    // App event handlers
+    app.whenReady().then(() => {
+    isElevated = checkElevation();
+    createWindow();
+
+    // macOS-specific: Create a new window when app is activated with no windows
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow();
+        }
+    });
+});
+
+// Handle window-all-closed event
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
 // Check if running with admin privileges
 function checkElevation() {
     try {
@@ -77,26 +101,7 @@ async function startInstallation() {
         }
     }
 }
-
-// App event handlers
-app.whenReady().then(() => {
-    isElevated = checkElevation();
-    createWindow();
-
-    // macOS-specific: Create a new window when app is activated with no windows
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow();
-        }
-    });
-});
-
-// Handle window-all-closed event
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
+ 
 
 // IPC handlers
 ipcMain.on('start-installation', async () => {
