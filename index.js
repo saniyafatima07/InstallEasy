@@ -41,3 +41,5 @@ ipcRenderer.on('elevation-failed', () => {
     addProgress('Failed to get administrator privileges. Please run the installer as administrator.', '⚠');
     document.getElementById('startButton').disabled = false;
 });
+
+

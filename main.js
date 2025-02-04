@@ -59,7 +59,7 @@ function checkElevation() {
         return true;
     } catch {
         return false;
-        //console.log("Not admitted");
+        // console.log("Not admitted");
     }
 }
 
@@ -78,6 +78,7 @@ async function startInstallation() {
         };
 
         sendProgress('Starting installation...');
+        
         await installer.init();
         
         sendProgress('Installing compiler...');
