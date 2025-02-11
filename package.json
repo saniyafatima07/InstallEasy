@@ -14,6 +14,9 @@
         "windows-elevate": "^1.0.1"
     },
     "devDependencies": {
-        "electron": "^34.0.2"
+        "electron": "^34.0.2",
+        "electron-builder": "^25.1.8",
+        "mac": "^0.4.0",
+        "win": "^0.0.1"
     }
 }

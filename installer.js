@@ -5,7 +5,6 @@ const path = require('path');
 const util = require('util');
 const execPromise = util.promisify(exec);
 const chocoCmd = `@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"`;
-const { execSync } = require('child_process');
 
 class CppInstaller {
     constructor() {
@@ -60,7 +59,7 @@ class CppInstaller {
                 await execPromise('choco install vscode -y');
             } else if (process.platform === 'darwin') {
                 await execPromise('brew install --cask visual-studio-code');
-            } else {
+            } else {    
                 await execPromise('sudo snap install code --classic');
             }
             return true;
