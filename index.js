@@ -30,6 +30,7 @@ ipcRenderer.on('installation-progress', (_event, message) => {
 });
 
 ipcRenderer.on('installation-error', (event, message) => {
+    const errorMessage = Buffer.isBuffer(message) ? message.toString('utf8') : message;
     const messageElement = document.createElement('div');
     messageElement.className = 'progress-message error';
     messageElement.innerHTML = `<span class="status-icon">❌</span>Error: ${message}`;

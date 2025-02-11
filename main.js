@@ -99,6 +99,7 @@ async function startInstallation() {
         sendProgress('Installation completed successfully!');
     } catch (error) {
         if (mainWindow && !mainWindow.isDestroyed()) {
+            const errorMessage = Buffer.isBuffer(error.message) ? error.message.toString('utf8') : error.message;
             mainWindow.webContents.send('installation-error', error.message);
         }
     }
@@ -122,6 +123,7 @@ ipcMain.on('start-installation', async () => {
         } else {
             // For non-Windows platforms, send error
             if (mainWindow && !mainWindow.isDestroyed()) {
+                const errorMessage = 'Administrator privileges required';
                 mainWindow.webContents.send('installation-error', 'Administrator privileges required');
             }
              return;

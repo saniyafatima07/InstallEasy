@@ -1,4 +1,5 @@
 const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -34,8 +35,10 @@ class CppInstaller {
         try {
             if (process.platform === 'win32') {
                 // Install MinGW using winget
-                await execPromise('winget install -e --id GnuWin32.Make');
-                await execPromise('winget install -e --id MinGW.MinGW');
+                const chocoCmd = `@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"`;
+                execSync(chocoCmd);
+                // await execPromise('winget install -e --id GnuWin32.Make');
+                await execPromise('choco install mingw -y');
             } else if (process.platform === 'darwin') {
                 // Install gcc on macOS using brew
                 await execPromise('brew install gcc');
@@ -52,7 +55,7 @@ class CppInstaller {
     async installVSCode() {
         try {
             if (process.platform === 'win32') {
-                await execPromise('winget install -e --id Microsoft.VisualStudioCode');
+                await execPromise('choco install vscode -y');
             } else if (process.platform === 'darwin') {
                 await execPromise('brew install --cask visual-studio-code');
             } else {
