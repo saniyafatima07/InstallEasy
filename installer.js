@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const execPromise = util.promisify(exec);
+const chocoCmd = `@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"`;
+const { execSync } = require('child_process');
 
 class CppInstaller {
     constructor() {
