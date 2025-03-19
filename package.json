@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Automated C/C++ development environment installer",
     "main": "main.js",
+    "$schema": "./package.json",
     "scripts": {
         "start": "electron .",
         "build": "electron-builder"
